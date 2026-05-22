@@ -1,71 +1,75 @@
 ### Wanke Yang
 
-Finance graduate with 5 years of management consulting at Mercer (Marsh McLennan). Now pursuing an MSc in Responsible Management at the University of Geneva. I build Python workflows for evidence-based investment research, data quality control, and structured reporting.
+Finance graduate with 5 years of management consulting at Mercer (Marsh McLennan). Now pursuing an MSc in Responsible Management at the University of Geneva.
+
+I care about one thing in research: can someone else check your work? The projects below reflect how I approach this. Each one covers a different part of the research pipeline, from collecting raw data to producing a finished analysis to verifying that the conclusions actually hold up.
 
 ---
 
-#### What I have built
+#### At a glance
 
-| Project | What it does | Output |
+| Project | Part of the pipeline | Output |
 |---|---|---|
-| [Financial data analysis](https://github.com/Kewanvk/smi-market-timing-analysis) | Tests a common investment claim against 20 years of Swiss market data. Documents assumptions, includes failure cases. | Python script, charts, research memo |
-| [Structured data intelligence](https://github.com/Kewanvk/linkedin-recon-skill) | Collects raw data from public sources, applies multi-dimensional analysis, produces structured insight reports. | Interactive reports, org maps, relationship graphs |
-| [Research quality control](https://github.com/Kewanvk/zuoshi-kaopu) | Two actions: adversarial review (a second model challenges blind spots) and source verification (checks claims against documents, returns exact quotes). | Verified research output with source trails |
+| [Financial data analysis](https://github.com/Kewanvk/smi-market-timing-analysis) | Analysis and reporting | Research memo, Python script, charts |
+| [Structured data intelligence](https://github.com/Kewanvk/linkedin-recon-skill) | Data collection and structuring | Interactive reports, org maps, network graphs |
+| [Research quality control](https://github.com/Kewanvk/zuoshi-kaopu) | Verification and challenge | Source-verified output with evidence trails |
 
 ---
 
-#### Financial Data Analysis
+### Part 1: Analysis and Reporting
 
-**Question tested:** How much does market timing actually cost, and does the standard argument hold up when you test both sides?
+**The question:** How much does market timing actually cost? The standard argument only shows one side. Does it survive a symmetric test?
 
-**Data:** Swiss Market Index (SMI), daily returns, 2006 to 2025. Source: Yahoo Finance.
+**Data:** Swiss Market Index, daily returns, 2006 to 2025. Source: Yahoo Finance.
 
-**Method:** Remove the N best days, the N worst days, or both from the return series. Compute compounded cumulative returns for each scenario. Repeat across rolling 5-year windows.
+**Method:** Remove the N best days, the N worst days, or both. Compute compounded returns. Repeat across 16 rolling 5-year windows to check robustness.
 
-**Output:** Research memo with methodology, five data tables, three charts, and a reproducible Python script.
+**What I found:** The extreme up and down days cluster together. Missing both barely changes the outcome. The standard argument holds, but only after you test the other side.
 
-**Limitations:** Uses price return index, not total return. Does not include transaction costs. The practical conclusion (stay invested) is well established; the contribution is completing the symmetric argument, not discovering something new.
+**Limitations:** Uses price return index, not total return. No transaction costs. The conclusion (stay invested) is not new. The contribution is completing the symmetric case, not discovering something.
 
-[View repository](https://github.com/Kewanvk/smi-market-timing-analysis)
+**What I would improve:** Re-run with total return data (Bloomberg SMIC) and add a transaction cost layer.
+
+[View repository and full memo](https://github.com/Kewanvk/smi-market-timing-analysis)
 
 ---
 
-#### Structured Data Intelligence
+### Part 2: Data Collection and Structuring
 
-**Question tested:** Can you extract actionable organizational insight from scattered public professional data?
+**The question:** Can you turn scattered public professional data into structured, actionable organizational insight?
 
 **Data:** Public professional profiles collected via API. Hundreds of data points per analysis.
 
-**Method:** Systematic collection, multi-dimensional cross-analysis (role, seniority, tenure, connections, content activity), relationship mapping, structured report generation.
+**Method:** Systematic collection, then multi-dimensional cross-analysis: role, seniority, tenure, connections, content activity, and relationship patterns. Framework-based, not ad hoc.
 
-**Output:** Single-page interactive HTML reports with org structure visualization (SVG), hidden relationship networks (D3.js force graphs), and prioritized action plans.
+**What it produces:** Single-page interactive HTML reports with organizational structure visualization (SVG), relationship network mapping (D3.js), and prioritized recommendations.
 
-**Limitations:** Dependent on public data availability. Analysis quality scales with data completeness. Ethical constraints on data usage are documented and enforced.
+**Limitations:** Quality depends on public data availability. Ethical constraints on data usage are documented and enforced in the codebase.
 
 [View repository](https://github.com/Kewanvk/linkedin-recon-skill)
 
 ---
 
-#### Research Quality Control
+### Part 3: Verification and Challenge
 
-**Question tested:** How do you reduce hallucination and blind spots in AI-assisted research without slowing down?
+**The problem:** AI-assisted research is fast but fragile. Models generate plausible text that may not be grounded in your actual sources. How do you catch this without slowing down?
 
-**Method:** Two independent actions, usable at any point in a research workflow.
-1. *Brainstorm:* A second AI model receives your work and challenges it. It finds unstated assumptions, logical gaps, and things you have not considered. It does not give replacement solutions.
-2. *Verify:* NotebookLM searches your source documents for evidence supporting or contradicting each claim. Returns exact quotes, source locations, and confidence levels. If no evidence exists, it says "not found."
+**Solution:** Two independent actions, usable at any point during research.
 
-**Output:** Research output with documented challenge rounds and source-grounded verification trails.
+*Brainstorm:* A second AI model receives your work and challenges it. Finds unstated assumptions, logical gaps, and unconsidered angles. Does not provide replacement solutions. You decide what to change.
 
-**Limitations:** Brainstorm quality depends on the second model's reasoning ability. Verification only works against documents you have uploaded; it cannot check claims against the open internet.
+*Verify:* NotebookLM searches your source documents and returns exact quotes, source locations, and confidence levels. If no evidence exists, it says "not found." No guessing.
+
+**Limitations:** Brainstorm quality depends on the second model. Verification only works against uploaded documents, not the open internet.
 
 [View repository](https://github.com/Kewanvk/zuoshi-kaopu)
 
 ---
 
-#### Background
+### Background
 
-- **Education:** BSc Finance (Southwestern University of Finance and Economics, China) / MSc Responsible Management (University of Geneva, current)
-- **Experience:** 5 years management consulting at Mercer, working with SOEs, multinationals, and private companies on organizational change, knowledge systems, and client delivery
+- **Education:** BSc Finance (Southwestern University of Finance and Economics) / MSc Responsible Management (University of Geneva, current)
+- **Experience:** 5 years management consulting at Mercer. Organizational change, knowledge systems, end-to-end client delivery across SOEs, multinationals, and private companies.
 - **Tools:** Python (pandas, matplotlib), AI-assisted research workflows, structured reporting
 - **Languages:** Chinese (native), English (fluent)
 - **Location:** Geneva, Switzerland. Valid Swiss work permit.
